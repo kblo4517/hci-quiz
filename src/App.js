@@ -1,6 +1,7 @@
 import './App.css';
-import chip from './img/chip.jpg'
-import {BrowserRouter as Router, Switch, Route, Link, Redirect} from 'react-router-dom'
+// import chip from './img/chip.jpg'
+import {BrowserRouter as Router/*, Switch, Route, Link, Redirect*/} from 'react-router-dom'
+import Home from './Home'
 import FirstTask from './FirstTask';
 import SecondTask from './SecondTask'
 import ThirdTask from './ThirdTask'
@@ -11,26 +12,29 @@ import Final from './Final'
 
 function App() {
 
+  const routes = [
+    {path: '/home', name: 'Home', Component: Home},
+    {path: '/firsttask', name: 'First Task', Component: FirstTask},
+    {path: '/secondtask', name: 'Second Task', Component: SecondTask},
+    {path: '/thirdtask', name: 'Third Task', Component: ThirdTask},
+    {path: '/fourthtask', name: 'Fourth Task', Component: FourthTask},
+    {path: '/fifthtask', name: 'Fifth Task', Component: FifthTask},
+    {path: '/quizstart', name: 'Quiz Start', Component: QuizStart},
+    {path: '/final', name: 'Final', Component: Final},
+  ]
+
   // const history = useHistory()
 
   return (
     <>  
       <Router>
-        <Switch>
-          <Route path="/home">
-            <div className="d-flex justify-content-around app">
-              <div className="col-8 text-center">
-                <img src={chip} alt="computer chip" id="chip" className="" />
-                <h1 className="title-1 text-center">Human Computer Interaction</h1>
-              </div>
-              <div className="col-4 align-self-center">
-                <p className="text-justify">Hello, welcome to the Human Computer Interaction Module. During this journey, you'll learn various human computer interaction concepts and topics. Along the way, you'll be tested on what you've learned, so pay attention. At the end, there'll also be a final test. When you're ready, click the button below to begin.</p>
-                <Link to="/firsttask"><button className="btn theme_3 text-white start">Start</button></Link> 
-              </div>
-            </div>
-          </Route>
+
 
           
+            {/* 
+            <Route path="/home">
+              <Home />
+            </Route>
             <Route path="/firsttask">
               <FirstTask />
             </Route>
@@ -52,8 +56,7 @@ function App() {
             <Route path="/final">
               <Final />
             </Route>
-            <Redirect from="/" to="/home"/>
-          </Switch>
+            <Redirect from="/" to="/home"/> */}
       </Router> 
     </>
   );
