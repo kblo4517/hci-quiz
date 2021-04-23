@@ -1,3 +1,7 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+// eslint-disable-next-line no-unused-vars
+import $ from 'jquery';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
