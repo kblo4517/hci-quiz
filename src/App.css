@@ -6,6 +6,7 @@ p {
     font-family: 'Open Sans', sans-serif;
 }
 
+
 .theme_1 {
     background-color:#93E9BE;
 }
@@ -17,8 +18,6 @@ p {
 .theme_3 {
     background-color: #353535;
 }
-
-/* Title Page */
 
 
 #chip {
@@ -55,7 +54,6 @@ body {
   }
   
   body {
-    background-color: #7cc6fe;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -117,23 +115,13 @@ body {
   button {
     width: 100%;
     font-size: 16px;
-    color: #ffffff;
-    background-color: #252d4a;
     border-radius: 15px;
     display: flex;
+    margin: 5px;
     padding: 5px;
     justify-content: center;
     align-items: center;
-    border: 5px solid #234668;
     cursor: pointer;
-  }
-  
-  .correct {
-    background-color: #2f922f;
-  }
-  
-  .incorrect {
-    background-color: #ff3333;
   }
   
   button:hover {

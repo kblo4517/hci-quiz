@@ -88,6 +88,7 @@ export default function Final() {
 	};
 
 	return (
+		<>
 		<div className='app'>
 			{showScore ? (
 				<>
@@ -95,9 +96,6 @@ export default function Final() {
 						<div className='score-section text-center'>
 							You scored {score} out of {questions.length}
 						</div>
-					</div>
-					<div className="row">
-						<Link to="/home"><button className="btn theme_3 text-white start">Home</button></Link>
 					</div>
 				</>
 
@@ -111,12 +109,16 @@ export default function Final() {
 					</div>
 					<div className='answer-section text-center'>
 						{questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+							<button className="btn theme_3 text-white start" onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
 						))}
-						
+						<div className="row d-flex justify-content-start">
+							<Link to="/home"><button className="btn theme_3 text-white start">Home</button></Link>
+						</div>
 					</div>
+					<br/>
 				</>
 			)}
 		</div>
+		</>
 	);
 }

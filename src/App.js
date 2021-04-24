@@ -1,6 +1,5 @@
 import './App.css';
-// import chip from './img/chip.jpg'
-import {BrowserRouter as Router/*, Switch, Route, Link, Redirect*/} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch, Link, Redirect} from 'react-router-dom'
 import Home from './Home'
 import FirstTask from './FirstTask';
 import SecondTask from './SecondTask'
@@ -9,54 +8,73 @@ import FourthTask from './FourthTask'
 import FifthTask from './FifthTask'
 import QuizStart from './QuizStart'
 import Final from './Final'
+import {AnimatedSwitch, spring} from 'react-router-transition'
 
 function App() {
 
-  const routes = [
-    {path: '/home', name: 'Home', Component: Home},
-    {path: '/firsttask', name: 'First Task', Component: FirstTask},
-    {path: '/secondtask', name: 'Second Task', Component: SecondTask},
-    {path: '/thirdtask', name: 'Third Task', Component: ThirdTask},
-    {path: '/fourthtask', name: 'Fourth Task', Component: FourthTask},
-    {path: '/fifthtask', name: 'Fifth Task', Component: FifthTask},
-    {path: '/quizstart', name: 'Quiz Start', Component: QuizStart},
-    {path: '/final', name: 'Final', Component: Final},
-  ]
+  function mapStyles(styles) {
+    return {
+      opacity: styles.opacity,
+      transform: `scale(${styles.scale})`
+    }
+  }
 
+  function bounce(val) {
+    return spring(val, {
+      stiffness: 330,
+      damping: 22
+    })
+  }
+
+  const bounceTransition = {
+    atEnter: {
+      opacity: 0,
+      scale: 1.2
+    },
+    atLeave: {
+      opacity: bounce(0),
+      scale: bounce(0.8)
+    },
+    atActive: {
+      opacity: bounce(1),
+      scale: bounce(1)
+    }
+  }
   // const history = useHistory()
 
   return (
     <>  
       <Router>
-
-
-          
-            {/* 
-            <Route path="/home">
-              <Home />
-            </Route>
-            <Route path="/firsttask">
-              <FirstTask />
-            </Route>
-            <Route path="/secondtask">
-              <SecondTask />
-            </Route>
-            <Route path="/thirdtask">
-              <ThirdTask />
-            </Route>
-            <Route path="/fourthtask">
-              <FourthTask />
-            </Route>
-            <Route path="/fifthtask">
-              <FifthTask />
-            </Route>
-            <Route path="/quizstart">
-              <QuizStart />
-            </Route>
-            <Route path="/final">
-              <Final />
-            </Route>
-            <Redirect from="/" to="/home"/> */}
+        <AnimatedSwitch atEnter={bounceTransition.atEnter} 
+        atLeave={bounceTransition.atLeave}
+        atActive={bounceTransition.atActive}
+        mapStyles={mapStyles} >
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/firsttask">
+            <FirstTask />
+          </Route>
+          <Route path="/secondtask">
+            <SecondTask />
+          </Route>
+          <Route path="/thirdtask">
+            <ThirdTask />
+          </Route>
+          <Route path="/fourthtask">
+            <FourthTask />
+          </Route>
+          <Route path="/fifthtask">
+            <FifthTask />
+          </Route>
+          <Route path="/quizstart">
+            <QuizStart />
+          </Route>
+          <Route path="/final">
+            <Final />
+          </Route>
+          <Redirect from="/" to="/home"/>
+        </AnimatedSwitch>
       </Router> 
     </>
   );
